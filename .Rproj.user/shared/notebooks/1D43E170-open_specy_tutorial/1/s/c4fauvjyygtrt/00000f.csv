@@ -1,0 +1,11 @@
+"0","# seq(n1,n2,by = n): Create a vector sequence of numbers from range n1 to n2 by intervals of n "
+"0","# runif(n = ): Generates n random numbers between the range of 0 to 1  "
+"0","# file_name: name of file that will be listed in the metadata"
+"0",""
+"0","scratch_OpenSpecy <- as_OpenSpecy("
+"0","  x = seq(, , by = ),"
+"0","  spectra = data.frame(runif(n = )),"
+"0","  metadata = list(file_name = )"
+"0",")"
+"2","Error in runif(n = ) : argument ""n"" is missing, with no default
+"

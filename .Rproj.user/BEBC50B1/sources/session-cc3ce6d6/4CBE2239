@@ -1,0 +1,28 @@
+{
+    "id": "4CBE2239",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1783213804961.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "id": "58a0da1219b048539705c9676d4a7e82",
+        "name": "spectral_map",
+        "title": "spectral_map",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1783213790,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1783213804961,
+    "read_only": false,
+    "read_only_alternatives": []
+}

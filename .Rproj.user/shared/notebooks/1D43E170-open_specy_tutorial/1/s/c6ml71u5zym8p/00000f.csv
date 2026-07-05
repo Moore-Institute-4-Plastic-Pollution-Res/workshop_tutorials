@@ -1,0 +1,9 @@
+"0","sig_noise(processed, metric = ""sig_over_noise"", sig_min = 2700, sig_max = 3000, noise_min = 1500, noise_max = 2500) > 
+  sig_noise(raman_hdpe, metric = ""sig_over_noise"", sig_min = 2700, sig_max = 3000, noise_min = 1500, noise_max = 2500)
+"
+"1","intensity "
+"1","
+"
+"1","     TRUE "
+"1","
+"

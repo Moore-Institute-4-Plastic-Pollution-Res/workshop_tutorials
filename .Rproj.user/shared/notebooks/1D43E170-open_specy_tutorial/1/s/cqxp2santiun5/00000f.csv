@@ -1,0 +1,2 @@
+"0","# Provide the file path of your data"
+"0","testspectra <- read_any(""data/Test Data20260617-143905.csv"")"
