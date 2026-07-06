@@ -3,9 +3,8 @@
 "0","# file_name: name of file that will be listed in the metadata"
 "0",""
 "0","scratch_OpenSpecy <- as_OpenSpecy("
-"0","  x = seq(, , by = ),"
-"0","  spectra = data.frame(runif(n = )),"
-"0","  metadata = list(file_name = )"
+"0","  x = seq(1000,2000, by =5),"
+"0","  spectra = data.frame(runif(n = 201)),"
+"0","  metadata = list(file_name = ""fake_noise"")"
 "0",")"
-"2","Error in runif(n = ) : argument ""n"" is missing, with no default
-"
+"0",""

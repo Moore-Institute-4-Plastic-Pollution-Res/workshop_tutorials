@@ -1,2 +1,0 @@
-"0","spectral_map <- read_extdata(""CA_tiny_map.zip"") |> "
-"0","  read_any()"

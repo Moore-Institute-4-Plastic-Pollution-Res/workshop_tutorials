@@ -1,0 +1,6 @@
+"0","identical(filter_spec(spectral_map, 150), filter_spec(spectral_map, spectral_map$metadata$y == 9 & spectral_map$metadata$x == 5))
+"
+"1","[1]"
+"1"," TRUE"
+"1","
+"
