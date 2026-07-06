@@ -27,7 +27,7 @@ The Open Specy R package is the backbone of the Shiny app. The choice is yours a
 To install the most up to date and stable Open Specy version 1.5.3.
 
 ```{r}
-install.packages("OpenSpecy")
+install.packages()
 ```
 
 # Open Specy App
@@ -35,7 +35,7 @@ install.packages("OpenSpecy")
 After installing the R package, you just need to read in the package. This will load in all the functions needed for using Open Specy.
 
 ```{r}
-library(OpenSpecy)
+library()
 ```
 
 The package has a built in app that you can use in addition to the [web version](https://openanalysis.org/openspecy/). This will install all current versions of the spectral libraries and Open Specy code and will pop up on your screen.
@@ -68,14 +68,14 @@ The following line of code will read in your data. Open Specy currently is able 
 
 ```{r}
 # Provide the file path of your data
-testspectra <- read_any("data/Test Data20260617-143905.csv")
+testspectra <- read_any()
 ```
 
 We can also work with test data
 
 ```{r}
 # Add direct file path to dataset
-data("raman_hdpe")
+data()
 ```
 
 # Open Specy Objects
@@ -126,18 +126,18 @@ Some generic functions for inspecting the spectra:
 
 ```{r}
 # raw object
-print(scratch_OpenSpecy)
+print()
 ```
 
 ```{r}
 # summarize contents of object
-summary(scratch_OpenSpecy)
+summary()
 ```
 
 ```{r}
 # Show the frst n number of wavenumbers and intensitites
 
-head(scratch_OpenSpecy, 10)
+head()
 ```
 
 Open Specy objects can be saved most accurately as .csv, .rds, .yml, or .json files. .rds will be the most reproducible as it is a native R file format and floating point errors can happen with .csv, .json, or .yml.
@@ -174,14 +174,13 @@ plotly_spec()
 Spectral maps can also be visualized as overlaid spectra but in addition the spatial information can be plotted as a heatmap. It is important to note that when multiple spectra are uploaded in batch they are prescribed `x` and `y` coordinates, this can be helpful for visualizing summary statistics and navigating vast amounts of data but shouldn’t be confused with data which actually has spatial coordinates.
 
 ```{r}
-spectral_map <- read_extdata("CA_tiny_map.zip") |>   
-  read_any()
+spectral_map 
 ```
 
 An interactive plot of the heatmap and spectra overlayed can be generated with the [`interactive_plot()`](https://raw.githack.com/wincowgerDEV/OpenSpecy-package/main/docs/reference/interactive_plots.html) function. A user can hover over the heatmap to identify the next row id they are interested in and update the value of select to see that spectrum.
 
 ```{r}
-interactive_plot(spectral_map, select = 100, z = spectral_map$metadata$x) 
+
 ```
 
 # Filtering Open Specy Objects
@@ -190,17 +189,17 @@ OpenSpecy objects can have any number of spectra in them. To create an OpenSpecy
 
 ```{r}
 # Extract the 150th spectrum by index number. 
-filter_spec(spectral_map, 150)
+filter_spec()
 
 # Extract the 150th spectrum by spectrum name. 
-filter_spec(spectral_map, "9_5")
+filter_spec()
 # Extract the 150th spectrum by logical test. 
-filter_spec(spectral_map, spectral_map$metadata$x == 9 &  spectral_map$metadata$y == 5)
+filter_spec()
 
 #Test that they are the same. 
-identical(filter_spec(spectral_map, 150), filter_spec(spectral_map, "9_5"))
+identical()
 
-identical(filter_spec(spectral_map, 150), filter_spec(spectral_map, spectral_map$metadata$y == 9 & spectral_map$metadata$x == 5))
+identical())
 
 ```
 
@@ -209,7 +208,7 @@ identical(filter_spec(spectral_map, 150), filter_spec(spectral_map, spectral_map
 The goal of processing is to increase the signal to noise ratio (S/N) of the spectra and remove unwanted artifacts without distorting the shape, position, or relative size of the peaks. After loading data, you can process the data using intensity adjustment, baseline subtraction, smoothing, flattening, and range selection. The default settings is an absolute first derivative transformation. It is really powerful for many data issues. It does something similar to smoothing, baseline subtraction, and intensity correction simultaneously and really quickly.
 
 ```{r}
-processed_test_spectra <- process_spec(raman_hdpe)
+
 ```
 
 You can compare the processed and unprocessed data in the overlay plot.
@@ -217,7 +216,7 @@ You can compare the processed and unprocessed data in the overlay plot.
 ```{r}
 # plotly_spec(x=X1, x2=X2)
 # Extracting peaks where I would expect it and reducing the baseline
-plotly_spec(raman_hdpe, processed_test_spectra)
+
 ```
 
 Digging deeper into the process_spec function you can look at the official documentation of the function.
@@ -276,7 +275,7 @@ get_lib()
 After download you can load the libraries into your active environment one at a time as `OpenSpecy` objects. You can use any Open Specy object as a library which makes it easy to work with and create libraries because everything we explained earlier applies to them.
 
 ```{r}
-lib <- load_lib(type = "derivative")
+
 ```
 
 There are seven library types that can be retrieved, they are:
@@ -302,17 +301,5 @@ There are seven library types that can be retrieved, they are:
 After your spectra is processed similarly to the library specifications, you can identify the spectra using [`match_spec()`](https://raw.githack.com/wincowgerDEV/OpenSpecy-package/main/docs/reference/match_spec.html). Whichever library you choose, you need to get your spectra into a similar enough format to use for comparison.
 
 ```{r}
-processed <- process_spec(x = raman_hdpe, 
-                          #We will conform during matching. 
-                          conform_spec = F, 
-                          #Conducts the default derivative transformation. 
-                          smooth_intens = T)
-
-matches <- match_spec(
-  x = processed,
-  library = test_lib,
-  conform = T,
-  add_library_metadata = "sample_name",
-  top_n = 5)[order(match_val, decreasing = T)]
 
 ```
